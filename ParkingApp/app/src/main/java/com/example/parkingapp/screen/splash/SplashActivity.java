@@ -8,6 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.parkingapp.R;
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.screen.home.MainActivity;
+import com.example.parkingapp.screen.login.LoginActivity;
 
 import java.util.concurrent.Executors;
 
@@ -22,13 +23,15 @@ public class SplashActivity extends AppCompatActivity {
             @Override
             public void run() {
                 if (App.getDatabase() != null && App.getDatabase().userDao().getAll().size() > 0) {
-                    Intent homeIntent = new Intent(SplashActivity.this, MainActivity.class);
-                    SplashActivity.this.startActivity(homeIntent);
+                    startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
                 } else {
-                    //TODO
-                    //Intent loginActivity = new Intent(this, LoginActivity.class);
+                    startNextActivity(new Intent(SplashActivity.this, LoginActivity.class));
                 }
             }
         });
+    }
+
+    private void startNextActivity(Intent intent) {
+        startActivity(intent);
     }
 }

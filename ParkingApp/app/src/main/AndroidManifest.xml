@@ -10,7 +10,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingApp">
-
+        <activity android:name=".screen.login.LoginActivity"></activity>
         <activity
             android:name=".screen.splash.SplashActivity"
             android:screenOrientation="portrait"
@@ -21,10 +21,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity android:name=".screen.home.MainActivity">
-
-        </activity>
+        <activity android:name=".screen.home.MainActivity"></activity>
     </application>
 
 </manifest>
