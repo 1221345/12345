@@ -19,14 +19,11 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        Executors.newSingleThreadExecutor().execute(new Runnable() {
-            @Override
-            public void run() {
-                if (App.getDatabase() != null && App.getDatabase().userDao().getAll().size() > 0) {
-                    startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
-                } else {
-                    startNextActivity(new Intent(SplashActivity.this, LoginActivity.class));
-                }
+        Executors.newSingleThreadExecutor().execute(() -> {
+            if (App.getDatabase() != null && App.getDatabase().userDao().getAll().isEmpty()) {
+                startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
+            } else {
+                startNextActivity(new Intent(SplashActivity.this, LoginActivity.class));
             }
         });
     }
