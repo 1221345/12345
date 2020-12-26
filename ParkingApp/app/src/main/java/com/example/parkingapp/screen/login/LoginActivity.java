@@ -6,13 +6,19 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.parkingapp.app.App;
 import com.example.parkingapp.databinding.ActivityLoginBinding;
+import com.example.parkingapp.screen.home.MainActivity;
 import com.example.parkingapp.screen.register.RegisterActivity;
+import com.example.parkingapp.validator.EmailValidator;
+import com.example.parkingapp.validator.SharedPrefUtil;
+
+import java.util.concurrent.Executors;
 
 public class LoginActivity extends AppCompatActivity {
 
     private ActivityLoginBinding binding;
-    private String username = "";
+    private String email = "";
     private String password = "";
 
     @Override
@@ -30,20 +36,39 @@ public class LoginActivity extends AppCompatActivity {
     private void initButtons() {
         binding.register.setOnClickListener(v -> startActivity(new Intent(this, RegisterActivity.class)));
         binding.loginButton.setOnClickListener(v -> {
-            getUserInput();
-
-            if (!username.isEmpty() && !password.isEmpty()) {
-                //TODO Check DB Entry
-                //TODO If DB entry is ok, proceed to main screen
-                Toast.makeText(this, "Login Success", Toast.LENGTH_SHORT).show();
+            mapUserInput();
+            if (!email.isEmpty() && !password.isEmpty()) {
+                if (EmailValidator.isValidEmail(email)) {
+                    Executors.newSingleThreadExecutor().execute(this::initLogin);
+                } else {
+                    Toast.makeText(this, "Email not valid", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 Toast.makeText(this, "All input fields must be filled", Toast.LENGTH_SHORT).show();
             }
         });
     }
 
-    private void getUserInput() {
-        username = binding.username.getText().toString();
+    private void mapUserInput() {
+        email = binding.username.getText().toString();
         password = binding.password.getText().toString();
+    }
+
+    private void initLogin() {
+        if (App.getDatabase().userDao().findUserByMail(email) != null) {
+            if (App.getDatabase().userDao().findUserByMail(email).password.equals(password)) {
+                navigateHome();
+            } else {
+                runOnUiThread(() -> Toast.makeText(LoginActivity.this, "Incorrect password. Please try again", Toast.LENGTH_SHORT).show());
+            }
+        } else {
+            runOnUiThread(() -> Toast.makeText(LoginActivity.this, "User with that email not found in database", Toast.LENGTH_SHORT).show());
+        }
+    }
+
+    private void navigateHome() {
+        SharedPrefUtil.saveUserEmail(this, email);
+        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        finish();
     }
 }

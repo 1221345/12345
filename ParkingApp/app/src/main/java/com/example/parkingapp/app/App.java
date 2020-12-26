@@ -17,9 +17,7 @@ public class App extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        if (!doesDatabaseExist(this)) {
-            db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, DB_NAME).build();
-        }
+        db = Room.databaseBuilder(getApplicationContext(), AppDatabase.class, DB_NAME).build();
     }
 
     public static AppDatabase getDatabase() {

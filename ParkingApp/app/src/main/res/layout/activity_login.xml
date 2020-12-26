@@ -35,7 +35,7 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="20dp"
         android:layout_marginEnd="20dp"
-        android:hint="@string/username"
+        android:hint="@string/email"
         android:inputType="text"
         android:paddingStart="10dp"
         android:paddingEnd="10dp"

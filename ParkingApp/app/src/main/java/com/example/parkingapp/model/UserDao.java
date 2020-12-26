@@ -21,4 +21,6 @@ public interface UserDao {
     @Delete
     void delete(User user);
 
+    @Query("SELECT * FROM user WHERE email IN (:email)")
+    User findUserByMail(String email);
 }

@@ -7,7 +7,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parkingapp.R;
 import com.example.parkingapp.app.App;
-import com.example.parkingapp.screen.home.MainActivity;
 import com.example.parkingapp.screen.login.LoginActivity;
 
 import java.util.concurrent.Executors;
@@ -20,11 +19,12 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         Executors.newSingleThreadExecutor().execute(() -> {
-            if (App.getDatabase() != null && App.getDatabase().userDao().getAll().isEmpty()) {
-                startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
-            } else {
+            App.getDatabase().userDao().findUserByMail("vik@vik.com");
+//            if (App.getDatabase() != null && !App.getDatabase().userDao().getAll().isEmpty()) {
+//                startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
+//            } else {
                 startNextActivity(new Intent(SplashActivity.this, LoginActivity.class));
-            }
+//            }
             finish();
         });
     }
