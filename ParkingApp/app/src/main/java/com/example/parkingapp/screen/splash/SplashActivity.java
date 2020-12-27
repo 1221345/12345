@@ -25,7 +25,6 @@ public class SplashActivity extends AppCompatActivity {
                 initCities();
             }
 
-            App.getDatabase().userDao().findUserByMail("vik@vik.com");
 //            if (App.getDatabase() != null && !App.getDatabase().userDao().getAll().isEmpty()) {
 //                startNextActivity(new Intent(SplashActivity.this, MainActivity.class));
 //            } else {

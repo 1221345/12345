@@ -1,6 +1,7 @@
-package com.example.parkingapp.screen.city;
+package com.example.parkingapp.screen.city.list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
@@ -10,6 +11,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.parkingapp.databinding.ItemCityBinding;
 import com.example.parkingapp.model.City;
+import com.example.parkingapp.screen.city.details.CityDetails;
+import com.example.parkingapp.screen.reservation.ReservationActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,6 +63,8 @@ public class CityAdapter extends RecyclerView.Adapter<CityAdapter.ViewHolder> {
             if (city != null && !TextUtils.isEmpty(city.cityName)) {
                 itemCityBinding.itemCityName.setText(city.cityName);
             }
+            itemCityBinding.container.setOnClickListener(v -> context.startActivity(new Intent(context, CityDetails.class)));
+            itemCityBinding.itemCityButton.setOnClickListener(v -> context.startActivity(new Intent(context, ReservationActivity.class)));
         }
     }
 }

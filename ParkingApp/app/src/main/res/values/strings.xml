@@ -13,4 +13,8 @@
     <string name="close">Close</string>
     <string name="reservation">Reserve</string>
     <string name="my_reservations">My Reservations</string>
+    <string name="city_name">City name:</string>
+    <string name="total_spaces">Total spaces: 114</string>
+    <string name="free_spaces">Free spaces: 38</string>
+    <string name="fee">Fee: 30den/h</string>
 </resources>

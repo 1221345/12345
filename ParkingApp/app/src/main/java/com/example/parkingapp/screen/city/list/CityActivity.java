@@ -1,6 +1,8 @@
-package com.example.parkingapp.screen.city;
+package com.example.parkingapp.screen.city.list;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -10,6 +12,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import com.example.parkingapp.R;
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.databinding.ActivityCityBinding;
+import com.example.parkingapp.screen.login.LoginActivity;
+import com.example.parkingapp.screen.myreservations.MyReservationsActivity;
 
 import java.util.concurrent.Executors;
 
@@ -42,6 +46,7 @@ public class CityActivity extends AppCompatActivity {
 
     private void setupNavigationView() {
         binding.toolbarId.toolbarBackButton.setVisibility(View.GONE);
+        binding.toolbarId.toolbarTitle.setText("Cities");
         binding.mDrawerLayout.setNavigationItemSelectedListener(item -> {
             switchScreen(item.getItemId());
             return true;
@@ -52,12 +57,19 @@ public class CityActivity extends AppCompatActivity {
         switch (id) {
             case R.id.menuItemLogout:
                 binding.navigationDrawer.closeDrawers();
-                //TODO Logout
+                finish();
+                startActivity(new Intent(this, LoginActivity.class));
                 break;
             case R.id.menuItemExit:
                 binding.navigationDrawer.closeDrawers();
                 finish();
                 break;
+            case R.id.menuItemReservations:
+                binding.navigationDrawer.closeDrawers();
+                startActivity(new Intent(this, MyReservationsActivity.class));
+                break;
+            default:
+                Log.e("TAG", "Nothing selected");
         }
     }
 

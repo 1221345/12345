@@ -10,8 +10,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.ParkingApp">
-        <activity
-            android:name=".screen.register.RegisterActivity" />
+        <activity android:name=".screen.myreservations.MyReservationsActivity"></activity>
+        <activity android:name=".screen.reservation.ReservationActivity" />
+        <activity android:name=".screen.city.details.CityDetails" />
+        <activity android:name=".screen.register.RegisterActivity" />
         <activity
             android:name=".screen.login.LoginActivity"
             android:theme="@style/Theme.ParkingApp.NoActionBar" />
@@ -25,7 +27,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".screen.city.CityActivity"
+        <activity
+            android:name=".screen.city.list.CityActivity"
             android:theme="@style/Theme.ParkingApp.NoActionBar" />
     </application>
 
