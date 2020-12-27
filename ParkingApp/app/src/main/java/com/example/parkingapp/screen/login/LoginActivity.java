@@ -8,10 +8,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.databinding.ActivityLoginBinding;
-import com.example.parkingapp.screen.home.CityActivity;
+import com.example.parkingapp.screen.city.CityActivity;
 import com.example.parkingapp.screen.register.RegisterActivity;
-import com.example.parkingapp.validator.EmailValidator;
-import com.example.parkingapp.validator.SharedPrefUtil;
+import com.example.parkingapp.util.EmailValidator;
+import com.example.parkingapp.util.SharedPrefUtil;
 
 import java.util.concurrent.Executors;
 

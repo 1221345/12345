@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.parkingapp.R;
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.screen.login.LoginActivity;
-import com.example.parkingapp.validator.CityListUtil;
+import com.example.parkingapp.util.CityListUtil;
 
 import java.util.concurrent.Executors;
 

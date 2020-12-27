@@ -1,4 +1,4 @@
-package com.example.parkingapp.validator;
+package com.example.parkingapp.util;
 
 import com.example.parkingapp.model.City;
 

@@ -10,8 +10,7 @@ import androidx.core.app.NavUtils;
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.databinding.ActivityRegisterBinding;
 import com.example.parkingapp.model.User;
-import com.example.parkingapp.validator.EmailValidator;
-import com.example.parkingapp.validator.SharedPrefUtil;
+import com.example.parkingapp.util.EmailValidator;
 
 import java.util.concurrent.Executors;
 

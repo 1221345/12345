@@ -1,4 +1,4 @@
-package com.example.parkingapp.screen.home;
+package com.example.parkingapp.screen.city;
 
 import android.content.Context;
 import android.text.TextUtils;

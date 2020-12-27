@@ -1,4 +1,4 @@
-package com.example.parkingapp.validator;
+package com.example.parkingapp.util;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
