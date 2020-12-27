@@ -5,13 +5,18 @@ import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
 
 import com.example.parkingapp.R;
-import com.example.parkingapp.databinding.ActivityMainBinding;
+import com.example.parkingapp.app.App;
+import com.example.parkingapp.databinding.ActivityCityBinding;
 
-public class MainActivity extends AppCompatActivity {
+import java.util.concurrent.Executors;
 
-    private ActivityMainBinding binding;
+public class CityActivity extends AppCompatActivity {
+
+    private ActivityCityBinding binding;
+    private CityAdapter cityAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,16 +26,18 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void initViewBinding() {
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        binding = ActivityCityBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
     }
 
     private void setupUi() {
+        initCityAdapter();
         ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, binding.navigationDrawer, binding.toolbarId.toolbar, R.string.open, R.string.close);
         binding.navigationDrawer.addDrawerListener(drawerToggle);
         binding.navigationDrawer.setClickable(true);
         drawerToggle.syncState();
         setupNavigationView();
+        showCityList();
     }
 
     private void setupNavigationView() {
@@ -52,5 +59,17 @@ public class MainActivity extends AppCompatActivity {
                 finish();
                 break;
         }
+    }
+
+    private void initCityAdapter() {
+        cityAdapter = new CityAdapter(this);
+        binding.cityRecyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
+        binding.cityRecyclerView.setAdapter(cityAdapter);
+    }
+
+    private void showCityList() {
+        Executors.newSingleThreadExecutor().execute(() -> {
+            cityAdapter.addAll(App.getDatabase().cityDao().getAll());
+        });
     }
 }

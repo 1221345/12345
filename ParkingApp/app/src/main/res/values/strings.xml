@@ -6,9 +6,11 @@
     <string name="login">Login</string>
     <string name="repeat_password">Repeat password</string>
     <string name="register">Register</string>
-    <string name="email">email</string>
+    <string name="email">Email</string>
     <string name="exit">Exit app</string>
     <string name="logout">Logout</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="reservation">Reserve</string>
+    <string name="my_reservations">My Reservations</string>
 </resources>

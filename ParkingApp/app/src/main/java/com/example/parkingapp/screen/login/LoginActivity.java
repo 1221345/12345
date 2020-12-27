@@ -8,7 +8,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.parkingapp.app.App;
 import com.example.parkingapp.databinding.ActivityLoginBinding;
-import com.example.parkingapp.screen.home.MainActivity;
+import com.example.parkingapp.screen.home.CityActivity;
 import com.example.parkingapp.screen.register.RegisterActivity;
 import com.example.parkingapp.validator.EmailValidator;
 import com.example.parkingapp.validator.SharedPrefUtil;
@@ -68,7 +68,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void navigateHome() {
         SharedPrefUtil.saveUserEmail(this, email);
-        startActivity(new Intent(LoginActivity.this, MainActivity.class));
+        startActivity(new Intent(LoginActivity.this, CityActivity.class));
         finish();
     }
 }
